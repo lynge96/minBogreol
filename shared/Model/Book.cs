@@ -1,30 +1,42 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace shared.Model;
+
 public class Book
 {
-    public int Id { get; set; }
-    public string Titel { get; set; }
-    public string Forfatter { get; set; }
-    public string Forlag { get; set; }
-    public int År { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+    public string? Titel { get; set; }
+    public string? Forfatter { get; set; }
+    public string? Forlag { get; set; }
+    public int UdgivelsesÅr { get; set; }
     public int Sider { get; set; }
-    public string Genre { get; set; }
+    public string? Genre { get; set; }
     public bool Læst { get; set; }
+    public string? Sprog { get; set; }
 
+    public Book() {
 
-    Book(int id, string titel, string forfatter, string forlag, int år, int sider, string genre, bool læst)
+    }
+
+    public Book(string id, string titel, string forfatter, string forlag, int år, int sider, string genre, bool læst, string sprog)
     {
         this.Id = id;
         this.Titel = titel;
         this.Forfatter = forfatter;
         this.Forlag = forlag;
-        this.År = år;
+        this.UdgivelsesÅr = år;
         this.Sider = sider;
         this.Genre = genre;
         this.Læst = læst;
+        this.Sprog = sprog;
     }
 
     public override string ToString()
     {
-        string toString = $"Titel: {Titel}\nForfatter: {Forfatter}\nForlag: {Forlag}\nÅr: {År}\nGenre: {Genre}\n";
+        string toString = $"Titel: {Titel}\nForfatter: {Forfatter}\nForlag: {Forlag}\nÅr: {UdgivelsesÅr}\nGenre: {Genre}\n";
 
         return toString;
     }
