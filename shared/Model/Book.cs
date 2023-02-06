@@ -5,18 +5,28 @@ namespace shared.Model;
 
 public class Book
 {
+    // MongoDB sørger for at generere og omdanne string Id til et objectId i databasen
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Id { get; set; }
+
     public string? Titel { get; set; }
+
     public string? Forfatter { get; set; }
+
     public string? Forlag { get; set; }
+
     public int UdgivelsesÅr { get; set; }
+
     public int Sider { get; set; }
+
     public string? Genre { get; set; }
+
     public bool Læst { get; set; }
+
     public string? Sprog { get; set; }
 
+    // Tom constructor er nødvendig for at sende data igennem API
     public Book() {
 
     }
