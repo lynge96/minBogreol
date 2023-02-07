@@ -16,6 +16,8 @@ public class MongoDBService {
         _bookCollection = database.GetCollection<Book>(mongoDBSettings.Value.CollectionName);
     }
 
+
+
     public async Task CreateBookAsync(Book book)
     {
         await _bookCollection.InsertOneAsync(book);
@@ -23,7 +25,7 @@ public class MongoDBService {
         return;
     }
 
-    public async Task<List<Book>> GetAsync()
+    public async Task<List<Book>> GetAllAsync()
     {
         return await _bookCollection.Find(new BsonDocument()).ToListAsync();
     }
