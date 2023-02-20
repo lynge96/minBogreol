@@ -28,6 +28,14 @@ public class BookController : Controller
         return await _mongoDBService.GetAllAsync();
     }
 
+    [HttpGet("randomBook")]
+    public async Task<Book> GetRandom()
+    {
+        _logger.LogInformation("\nMethod: GetRandom() called at {DT}", DateTime.UtcNow.ToLongTimeString());
+
+        return await _mongoDBService.GetRandomBookAsync();
+    }
+
 
     [HttpPost("postBook")]
     public async Task<IActionResult> PostBook(Book newBook)
